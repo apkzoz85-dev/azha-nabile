@@ -4,10 +4,9 @@ import Image from "next/image";
 import { launch, contact } from "@/lib/config";
 import { trackConversion } from "@/lib/track";
 import LeadForm from "./lead-form";
-import { WhatsAppIcon } from "./icons";
+import WAButton, { waMessages } from "./wa-button";
 
 export default function Hero() {
-  const wa = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(contact.whatsappMessage)}`;
   return (
     <section id="top" className="relative min-h-[100svh] flex items-end lg:items-center overflow-hidden bg-deep">
       <Image src="/images/hero.jpg" alt="فيلات أزها العين السخنة على اللاجون" fill priority sizes="100vw" className="object-cover" />
@@ -42,11 +41,13 @@ export default function Hero() {
             ))}
           </ul>
 
+          <div className="hidden lg:flex items-center gap-4">
+            <WAButton message={waMessages.hero} label="اعرف الأسعار على واتساب" sub="رد فوري — بدون فورم" size="lg" />
+          </div>
+
           <div className="flex flex-wrap gap-3 lg:hidden">
-            <a href="#contact" className="btn-gold">احجز أولويتك</a>
-            <a href={wa} target="_blank" rel="noopener" onClick={() => trackConversion("whatsapp")} className="btn-ghost">
-              <WhatsAppIcon /> واتساب
-            </a>
+            <WAButton message={waMessages.hero} label="الأسعار واتساب" className="flex-1 whitespace-nowrap" />
+            <a href="#contact" className="btn-ghost flex-1">احجز أولويتك</a>
           </div>
         </div>
 
@@ -55,6 +56,8 @@ export default function Hero() {
           <h2 className="text-2xl font-bold text-deep mb-1">احجز أولويتك الآن</h2>
           <p className="text-muted text-sm mb-5">عدد الفيلات محدود جداً — سجّل بياناتك وهنتواصل معاك بالأسعار والمساحات.</p>
           <LeadForm source="hero" />
+          <div className="flex items-center gap-3 text-xs text-muted my-4"><span className="flex-1 h-px bg-sand-2" />أو أسرع<span className="flex-1 h-px bg-sand-2" /></div>
+          <WAButton message={waMessages.brochure} label="ابعتلي البرشور والأسعار واتساب" size="sm" className="w-full" />
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import { launch, units, payment, contact } from "@/lib/config";
 import { trackConversion } from "@/lib/track";
 import { useUI } from "./ui-state";
 import LeadForm from "./lead-form";
+import WAButton, { waMessages } from "./wa-button";
 import {
   IslandIcon, WaveIcon, KeyIcon, SnowIcon, StarIcon, PinIcon, CheckIcon,
   BedIcon, AreaIcon, SunIcon, ShieldIcon, CupIcon, DumbbellIcon, TreeIcon, WhatsAppIcon,
@@ -83,12 +84,15 @@ export function Villas() {
                     <li key={f} className="flex items-center gap-2 text-ink"><CheckIcon className="w-4 h-4 text-lagoon shrink-0" />{f}</li>
                   ))}
                 </ul>
-                <div className="mt-auto flex items-end justify-between gap-4 border-t border-sand-2 pt-5">
-                  <div>
+                <div className="mt-auto border-t border-sand-2 pt-5">
+                  <div className="mb-4">
                     <div className="text-xs text-muted">السعر يبدأ من</div>
                     <div className="text-xl font-bold text-deep">{u.price ? <>{u.price} <span className="text-sm font-medium">ج.م*</span></> : "اطلب قائمة الأسعار"}</div>
                   </div>
-                  <button onClick={() => openLead(`unit-${u.nameEn}`)} className="btn-gold !py-3 !px-5 text-sm">اطلب التفاصيل</button>
+                  <div className="grid grid-cols-2 gap-2">
+                    <WAButton message={waMessages.price(u.name.split(" —")[0])} label="السعر واتساب" size="sm" />
+                    <button onClick={() => openLead(`unit-${u.nameEn}`)} className="btn-gold !bg-deep hover:!bg-deep-2 !py-2.5 !px-4 text-sm">اطلب التفاصيل</button>
+                  </div>
                 </div>
               </div>
             </article>
@@ -253,7 +257,10 @@ export function Payment() {
             <ul className="space-y-2 text-white/80 mb-6">
               {payment.notes.map((n) => <li key={n} className="flex gap-2"><CheckIcon className="w-5 h-5 text-gold shrink-0" />{n}</li>)}
             </ul>
-            <button onClick={() => openLead("payment")} className="btn-gold">اطلب خطة السداد</button>
+            <div className="flex flex-wrap gap-3">
+              <WAButton message={waMessages.payment} label="خطة السداد على واتساب" />
+              <button onClick={() => openLead("payment")} className="btn-ghost">اطلب خطة السداد</button>
+            </div>
           </div>
           <div className="grid gap-3">
             {cells.map(([k, v]) => (
@@ -308,7 +315,10 @@ export function Masterplan() {
         </div>
         <p className="text-center text-xs text-muted mt-3"><span className="md:hidden">اسحب لرؤية المخطط كاملاً — </span>مخطط مبدئي من المطور للتوضيح فقط</p>
         <div className="text-center mt-8">
-          <button onClick={() => openLead("masterplan")} className="btn-gold">اطلب الوحدات المتاحة على الجزيرة</button>
+          <div className="flex flex-wrap justify-center gap-3">
+            <WAButton message={waMessages.masterplan} label="ابعتلي المخطط والمتاح واتساب" />
+            <button onClick={() => openLead("masterplan")} className="btn-gold !bg-deep hover:!bg-deep-2">اطلب الوحدات المتاحة</button>
+          </div>
         </div>
       </div>
     </section>
@@ -342,6 +352,26 @@ export function Specs() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------ WhatsApp strip ------------------------- */
+export function WhatsAppStrip({ message = waMessages.brochure, title = "عايز الأسعار والبرشور دلوقتي؟", text = "ابعتلنا على واتساب ومستشارنا يبعتلك قائمة أسعار Island 3 والمخطط خلال دقائق." }: { message?: string; title?: string; text?: string }) {
+  return (
+    <section className="py-10">
+      <div className="container-x">
+        <div className="rounded-3xl bg-[#e9fbef] border border-[#bdeccd] px-6 py-7 sm:px-10 flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-right">
+          <div className="flex items-center gap-4">
+            <span className="hidden sm:flex w-14 h-14 shrink-0 rounded-2xl bg-[#25D366] text-white items-center justify-center"><WhatsAppIcon className="w-8 h-8" /></span>
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-deep mb-1">{title}</h3>
+              <p className="text-muted text-sm sm:text-base">{text}</p>
+            </div>
+          </div>
+          <WAButton message={message} label="ابدأ محادثة واتساب" size="lg" className="shrink-0 w-full md:w-auto" />
         </div>
       </div>
     </section>

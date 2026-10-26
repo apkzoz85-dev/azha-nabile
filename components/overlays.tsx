@@ -6,8 +6,8 @@ import { trackConversion } from "@/lib/track";
 import { useUI } from "./ui-state";
 import LeadForm from "./lead-form";
 import { CloseIcon, PhoneIcon, WhatsAppIcon } from "./icons";
+import WAButton, { waHref, waMessages } from "./wa-button";
 
-const waLink = () => `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(contact.whatsappMessage)}`;
 
 /* ------------------------------ Lead popup ----------------------------- */
 export function LeadPopup() {
@@ -49,6 +49,8 @@ export function LeadPopup() {
         <p className="eyebrow !text-gold-dark mb-1">{launch.projectEn}</p>
         <h3 className="text-2xl font-bold text-deep mb-1">Island 3 — S-Villa & L-Villa</h3>
         <p className="text-muted text-sm mb-5">عدد محدود جداً. سجّل لتصلك الأسعار والمساحات قبل أي حد.</p>
+        <WAButton message={waMessages.brochure} label="ابعتلي الأسعار واتساب" sub="رد خلال دقائق — بدون ما تملا فورم" className="w-full mb-4" />
+        <div className="flex items-center gap-3 text-xs text-muted mb-4"><span className="flex-1 h-px bg-sand-2" />أو سيب رقمك ونكلمك<span className="flex-1 h-px bg-sand-2" /></div>
         <LeadForm source={leadSource} />
       </div>
     </div>
@@ -57,10 +59,38 @@ export function LeadPopup() {
 
 /* --------------------------- Floating buttons -------------------------- */
 export function FloatingButtons() {
+  const [bubble, setBubble] = useState(false);
+  useEffect(() => {
+    let closed = false;
+    try { closed = sessionStorage.getItem("azha_wa_bubble") === "0"; } catch {}
+    if (closed) return;
+    // يظهر بعد ما العميل يعدّي الهيرو (عشان مايغطيش الفورم) + 6 ثواني على الأقل
+    let ready = false, past = false;
+    const tryShow = () => { if (ready && past) setBubble(true); };
+    const t = setTimeout(() => { ready = true; tryShow(); }, 6000);
+    const onScroll = () => { if (window.scrollY > window.innerHeight * 0.9) { past = true; tryShow(); } };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => { clearTimeout(t); window.removeEventListener("scroll", onScroll); };
+  }, []);
+  const hide = () => { setBubble(false); try { sessionStorage.setItem("azha_wa_bubble", "0"); } catch {} };
   return (
-    <div className="hidden md:flex fixed bottom-6 left-6 z-40 flex-col gap-3">
-      <a href={waLink()} target="_blank" rel="noopener" onClick={() => trackConversion("whatsapp")} className="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform" aria-label="واتساب">
-        <WhatsAppIcon className="w-7 h-7" />
+    <div className="hidden md:flex fixed bottom-6 left-6 z-40 flex-col gap-3 items-end">
+      {bubble && (
+        <div className="relative mb-1 w-72 bg-white rounded-2xl rounded-bl-sm shadow-2xl p-4 rise border border-sand-2">
+          <button onClick={hide} className="absolute top-2 left-2 w-6 h-6 rounded-full bg-sand flex items-center justify-center" aria-label="إغلاق"><CloseIcon className="w-3.5 h-3.5" /></button>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="relative w-9 h-9 rounded-full bg-deep text-gold flex items-center justify-center font-display font-bold">A<span className="absolute -bottom-0.5 -left-0.5 w-3 h-3 rounded-full bg-[#25D366] ring-2 ring-white" /></span>
+            <div><div className="font-bold text-deep text-sm">مستشار أزها السخنة</div><div className="text-[11px] text-[#1a9e4b]">متاح الآن على واتساب</div></div>
+          </div>
+          <p className="text-sm text-ink/80 mb-3 leading-relaxed">أهلاً 👋 عايز أسعار S-Villa و L-Villa في Island 3؟ ابعتلنا وهنرد عليك فوراً.</p>
+          <a href={waHref(waMessages.hero)} target="_blank" rel="noopener" onClick={() => { trackConversion("whatsapp"); hide(); }} className="flex items-center justify-center gap-2 rounded-full bg-[#25D366] hover:bg-[#1fb457] text-white font-bold py-2.5 text-sm">
+            <WhatsAppIcon /> ابدأ المحادثة
+          </a>
+        </div>
+      )}
+      <a href={waHref(waMessages.hero)} target="_blank" rel="noopener" onClick={() => trackConversion("whatsapp")} className="relative w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform" aria-label="واتساب">
+        <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30" />
+        <WhatsAppIcon className="w-7 h-7 relative" />
       </a>
       <a href={`tel:${contact.phone}`} onClick={() => trackConversion("call")} className="w-14 h-14 rounded-full bg-deep text-white ring-2 ring-white/70 flex items-center justify-center shadow-xl hover:scale-110 transition-transform" aria-label="اتصل بنا">
         <PhoneIcon className="w-6 h-6" />
@@ -77,12 +107,12 @@ export function MobileBar() {
       <a href={`tel:${contact.phone}`} onClick={() => trackConversion("call")} className="flex flex-col items-center gap-1 py-2.5 text-deep text-xs font-semibold">
         <PhoneIcon /> اتصال
       </a>
-      <button onClick={() => openLead("mobile-bar")} className="flex flex-col items-center justify-center gap-1 py-2.5 bg-gold text-white text-xs font-bold">
+      <a href={waHref(waMessages.hero)} target="_blank" rel="noopener" onClick={() => trackConversion("whatsapp")} className="flex flex-col items-center justify-center gap-0.5 py-2 bg-[#25D366] text-white text-xs font-bold">
+        <WhatsAppIcon className="w-6 h-6" /> الأسعار واتساب
+      </a>
+      <button onClick={() => openLead("mobile-bar")} className="flex flex-col items-center justify-center gap-1 py-2.5 text-gold-dark text-xs font-semibold">
         <span className="text-base leading-none">★</span> احجز أولويتك
       </button>
-      <a href={waLink()} target="_blank" rel="noopener" onClick={() => trackConversion("whatsapp")} className="flex flex-col items-center gap-1 py-2.5 text-[#1a9e4b] text-xs font-semibold">
-        <WhatsAppIcon /> واتساب
-      </a>
     </div>
   );
 }
