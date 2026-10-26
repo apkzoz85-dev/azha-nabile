@@ -24,6 +24,7 @@ export default function Hero() {
           <h1 className="rise-2 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.25] mb-5">
             تطرح شركة مدار <br className="hidden sm:block" />
             <span className="text-gold">أفخم فيلات</span> أزها السخنة
+            <span className="block text-xl sm:text-2xl font-semibold tracking-[0.3em] text-white/90 mt-3">ISLAND 3</span>
           </h1>
           <p className="rise-3 text-lg sm:text-xl text-white/85 max-w-xl leading-relaxed mb-8">{launch.subheadline}</p>
 
@@ -31,7 +32,7 @@ export default function Hero() {
             {[
               ["جزيرة", "خاصة"],
               [launch.distanceToSea, "من البحر"],
-              ["لاجون", "إطلالة مباشرة"],
+              ["60%", "وحدات بحري"],
               ["تشطيب كامل", "مطبخ + تكييفات"],
             ].map(([a, b]) => (
               <li key={a} className="border border-white/20 bg-white/5 backdrop-blur-sm rounded-2xl px-4 py-3">
@@ -50,7 +51,7 @@ export default function Hero() {
         </div>
 
         <div className="hidden lg:block bg-white rounded-3xl p-7 shadow-2xl rise-3">
-          <p className="eyebrow !text-gold-dark mb-1">First Launch</p>
+          <p className="eyebrow !text-gold-dark mb-1">Island 3 — Launching Soon</p>
           <h2 className="text-2xl font-bold text-deep mb-1">احجز أولويتك الآن</h2>
           <p className="text-muted text-sm mb-5">عدد الفيلات محدود جداً — سجّل بياناتك وهنتواصل معاك بالأسعار والمساحات.</p>
           <LeadForm source="hero" />

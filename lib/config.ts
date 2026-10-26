@@ -15,7 +15,7 @@ export const site = {
 export const contact = {
   phone: "01116663367", // رقم الكول
   whatsapp: "201116663367", // رقم الواتساب بصيغة دولية بدون +
-  whatsappMessage: "مرحباً، أريد تفاصيل فيلات أزها العين السخنة — الطرح الأول",
+  whatsappMessage: "مرحباً، أريد تفاصيل فيلات أزها العين السخنة — Island 3",
 };
 
 export const forms = {
@@ -41,11 +41,11 @@ export const launch = {
   developerEn: "Madaar Development",
   project: "أزها العين السخنة",
   projectEn: "Azha Ain Sokhna",
-  headline: "أفخم فيلات أزها على جزيرة خاصة",
+  headline: "Island 3 — أفخم فيلات أزها على جزيرة خاصة",
   subheadline:
-    "فيلات مستقلة بإطلالة مباشرة على اللاجون، على بُعد 500 متر فقط من البحر — تشطيب كامل بالمطبخ والتكييفات.",
-  badge: "الطرح الأول — عدد محدود جداً",
-  distanceToSea: "500 م",
+    "فيلات مستقلة بإطلالة مباشرة على اللاجون، على بُعد 400 متر فقط من البحر — تشطيب كامل بالمطبخ والتكييفات.",
+  badge: "ISLAND 3 — الطرح قريباً | عدد محدود جداً",
+  distanceToSea: "400 م",
 };
 
 // وحدات الطرح — عدّل/زوّد حسب البرشور. price/area = null → "اطلب التفاصيل"
@@ -63,8 +63,8 @@ export type Unit = {
 // أرقام تقريبية (average) من فريق المبيعات — تتأكد مع أول كونفرم
 export const units: Unit[] = [
   {
-    name: "فيلا الجزيرة — النموذج الأصغر",
-    nameEn: "Island Villa — Type A",
+    name: "S-Villa — فيلا مستقلة",
+    nameEn: "Island 3 — S-Villa",
     image: "/images/villa-1.jpg",
     bua: "250",
     land: null,
@@ -72,14 +72,14 @@ export const units: Unit[] = [
     price: "39,000,000",
     features: [
       "إطلالة مباشرة على اللاجون",
-      "500 متر من البحر",
+      "400 متر من البحر",
       "تشطيب كامل بالمطبخ والتكييفات",
-      "حديقة خاصة",
+      "60% من الوحدات بحري",
     ],
   },
   {
-    name: "فيلا الجزيرة — النموذج الأكبر",
-    nameEn: "Island Villa — Type B",
+    name: "L-Villa — فيلا مستقلة",
+    nameEn: "Island 3 — L-Villa",
     image: "/images/villa-render.jpg",
     bua: "312 إلى 318",
     land: null,
@@ -88,7 +88,7 @@ export const units: Unit[] = [
     features: [
       "دورين: أرضي ~170 م² + أول ~140 م²",
       "إطلالة مباشرة على اللاجون",
-      "500 متر من البحر",
+      "400 متر من البحر",
       "تشطيب كامل بالمطبخ والتكييفات",
     ],
   },

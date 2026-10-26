@@ -47,7 +47,7 @@ export function LeadPopup() {
       <div className="relative w-full max-w-md bg-white rounded-3xl p-7 shadow-2xl rise" onClick={(e) => e.stopPropagation()}>
         <button onClick={closeLead} className="absolute top-4 left-4 w-9 h-9 rounded-full bg-sand flex items-center justify-center" aria-label="إغلاق"><CloseIcon /></button>
         <p className="eyebrow !text-gold-dark mb-1">{launch.projectEn}</p>
-        <h3 className="text-2xl font-bold text-deep mb-1">فيلات الجزيرة — الطرح الأول</h3>
+        <h3 className="text-2xl font-bold text-deep mb-1">Island 3 — S-Villa & L-Villa</h3>
         <p className="text-muted text-sm mb-5">عدد محدود جداً. سجّل لتصلك الأسعار والمساحات قبل أي حد.</p>
         <LeadForm source={leadSource} />
       </div>
@@ -163,7 +163,7 @@ export function Footer() {
           <div>
             <div className="font-display text-3xl tracking-[0.3em] text-white font-semibold">AZHA</div>
             <div className="font-display text-[10px] tracking-[0.45em] text-gold mb-3">AIN SOKHNA</div>
-            <p className="max-w-sm">فيلات الجزيرة — الطرح الأول من {launch.developer}.</p>
+            <p className="max-w-sm">فيلات Island 3 — من {launch.developer}.</p>
           </div>
           <div className="flex flex-col gap-2">
             <a href={`tel:${contact.phone}`} onClick={() => trackConversion("call")} className="hover:text-gold" dir="ltr">{contact.phone}</a>

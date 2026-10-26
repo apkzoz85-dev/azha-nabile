@@ -5,7 +5,7 @@ import { forms, launch } from "@/lib/config";
 import { trackConversion } from "@/lib/track";
 import { useUI } from "./ui-state";
 
-const unitOptions = ["فيلا مستقلة على الجزيرة", "فيلا توين / تاون", "شاليه", "غير محدد"];
+const unitOptions = ["S-Villa", "L-Villa", "غير محدد"];
 const timeOptions = ["الآن", "صباحاً", "مساءً", "واتساب فقط"];
 
 export default function LeadForm({ source, dark = false }: { source: string; dark?: boolean }) {

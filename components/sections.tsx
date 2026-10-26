@@ -23,11 +23,11 @@ function SectionHead({ eyebrow, title, text, light = false }: { eyebrow: string;
 /* ------------------------------ Highlights ----------------------------- */
 export function Highlights() {
   const items = [
-    { icon: IslandIcon, t: "على جزيرة خاصة", d: "الفيلات على أقرب جزيرة للبحر داخل أزها — خصوصية كاملة وسط المياه." },
+    { icon: IslandIcon, t: "Island 3 — جزيرة خاصة", d: "جزيرة محاطة باللاجون من كل الجهات داخل أزها — خصوصية كاملة وسط المياه." },
     { icon: WaveIcon, t: `${launch.distanceToSea} من البحر`, d: "دقائق مشي من شاطئ خليج السويس والمياه الفيروزية." },
     { icon: SunIcon, t: "إطلالة مباشرة على اللاجون", d: "صف أول على اللاجون — المياه أمام باب الفيلا." },
     { icon: SnowIcon, t: "تشطيب كامل", d: "استلام بالمطبخ والتكييفات، جاهزة للسكن بدون تشطيب إضافي." },
-    { icon: KeyIcon, t: "فيلات مستقلة", d: "مساحات واسعة بحديقة خاصة تناسب العائلة طول السنة." },
+    { icon: KeyIcon, t: "60% من الوحدات بحري", d: "أغلب الفيلات موجهة للشمال — هوا بحري وتهوية طبيعية طول السنة." },
     { icon: StarIcon, t: "الطرح الأول", d: "عدد محدود جداً — أولوية الاختيار وأسعار الإطلاق لأول العملاء." },
   ];
   return (
@@ -54,7 +54,7 @@ export function Villas() {
   return (
     <section id="villas" className="py-20 sm:py-24 bg-white">
       <div className="container-x">
-        <SectionHead eyebrow="The Island Villas" title="فيلات الطرح الأول" text="نموذجين من الفيلات المستقلة على الجزيرة — الأسعار والمساحات تقريبية لحين الإعلان الرسمي. سجّل لتصلك قائمة الأسعار النهائية والبرشور." />
+        <SectionHead eyebrow="Island 3 Villas" title="فيلات Island 3" text="نموذجين S-Villa و L-Villa على Island 3 — الأسعار والمساحات تقريبية لحين الإعلان الرسمي. سجّل لتصلك قائمة الأسعار النهائية والبرشور." />
         <div className={`grid gap-6 ${units.length > 1 ? "md:grid-cols-2" : "max-w-5xl mx-auto"}`}>
           {units.map((u) => (
             <article key={u.nameEn} className={`rounded-3xl overflow-hidden bg-sand border border-sand-2 ${units.length === 1 ? "md:grid md:grid-cols-2" : ""}`}>
@@ -142,13 +142,13 @@ export function Lagoon() {
 /* ------------------------------- Amenities ----------------------------- */
 export function Amenities() {
   const list = [
-    { i: WaveIcon, t: "لاجونات للسباحة" },
-    { i: SunIcon, t: "شاطئ وبيتش كلوب" },
+    { i: WaveIcon, t: "Crystal Lagoons للسباحة" },
+    { i: SunIcon, t: "بيتش كلوب ولاجون كلوب هاوس" },
     { i: StarIcon, t: "كلوب هاوس" },
-    { i: CupIcon, t: "داون تاون ومطاعم وكافيهات" },
-    { i: KeyIcon, t: "فنادق وخدمات فندقية" },
+    { i: CupIcon, t: "AZHA Downtown" },
+    { i: KeyIcon, t: "فنادق 5 نجوم" },
     { i: DumbbellIcon, t: "جيم وسبا" },
-    { i: TreeIcon, t: "مساحات خضراء وحدائق" },
+    { i: TreeIcon, t: "سنترال بارك" },
     { i: ShieldIcon, t: "أمن وحراسة 24/7" },
   ];
   return (
@@ -302,9 +302,9 @@ export function Masterplan() {
   return (
     <section id="masterplan" className="py-20 sm:py-24 bg-white">
       <div className="container-x">
-        <SectionHead eyebrow="Island Masterplan" title="الجزيرة في قلب اللاجون" text="الفيلات محاطة بالمياه من الجهتين، بين قرى Taurina وSolana وAuva — وأقرب نقطة في أزها للبحر." />
+        <SectionHead eyebrow="Island 3 Masterplan" title="Island 3 في قلب اللاجون" text="جزيرة محاطة بالمياه من كل الجهات، بين قرى Lyra وAtria وTucana وIsland 4 — في الجزء الأقرب للبحر والبيتش كلوب." />
         <div className="rounded-3xl overflow-x-auto border border-sand-2 bg-sand" dir="ltr">
-          <Image src="/images/masterplan-island.jpg" alt="ماستر بلان جزيرة أزها العين السخنة" width={2000} height={780} sizes="(max-width:768px) 800px, 1200px" className="w-full min-w-[760px] md:min-w-0 h-auto" />
+          <Image src="/images/masterplan-island.jpg" alt="ماستر بلان Island 3 أزها العين السخنة" width={2000} height={871} sizes="(max-width:768px) 800px, 1200px" className="w-full min-w-[760px] md:min-w-0 h-auto" />
         </div>
         <p className="text-center text-xs text-muted mt-3"><span className="md:hidden">اسحب لرؤية المخطط كاملاً — </span>مخطط مبدئي من المطور للتوضيح فقط</p>
         <div className="text-center mt-8">
