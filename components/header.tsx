@@ -8,6 +8,7 @@ import { useUI } from "./ui-state";
 
 const links = [
   { href: "#villas", label: "الفيلات" },
+  { href: "#masterplan", label: "الماستر بلان" },
   { href: "#lagoon", label: "اللاجون" },
   { href: "#amenities", label: "الخدمات" },
   { href: "#location", label: "الموقع" },

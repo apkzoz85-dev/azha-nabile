@@ -80,16 +80,16 @@ export const units: Unit[] = [
   {
     name: "فيلا الجزيرة — النموذج الأكبر",
     nameEn: "Island Villa — Type B",
-    image: "/images/gallery-2.jpg",
+    image: "/images/villa-render.jpg",
     bua: "312 إلى 318",
     land: null,
     bedrooms: null,
     price: "45,000,000",
     features: [
+      "دورين: أرضي ~170 م² + أول ~140 م²",
       "إطلالة مباشرة على اللاجون",
       "500 متر من البحر",
       "تشطيب كامل بالمطبخ والتكييفات",
-      "مساحات أكبر للعائلة",
     ],
   },
 ];

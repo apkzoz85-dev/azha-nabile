@@ -189,10 +189,17 @@ export function Gallery() {
 /* ------------------------------- Location ------------------------------ */
 export function Location() {
   const points = [
-    "مباشرة على ساحل خليج السويس في العين السخنة",
-    "قرابة ساعة من شرق القاهرة",
-    "قريبة من العاصمة الإدارية الجديدة",
-    "وصول سهل عبر طريق العين السخنة وطريق الجلالة",
+    "على الجانب الأيسر من العين السخنة — حوالي 50 دقيقة من القاهرة",
+    "واجهة بحرية حوالي 700 متر على خليج السويس",
+    "وصول مباشر عبر طريق القاهرة – العين السخنة",
+  ];
+  const distances = [
+    ["العاصمة الإدارية", "82 كم"],
+    ["القاهرة الجديدة", "114 كم"],
+    ["مطار القاهرة", "126 كم"],
+    ["ميناء العين السخنة", "12 كم"],
+    ["بورتو السخنة", "38 كم"],
+    ["قناة السويس", "40 كم"],
   ];
   return (
     <section id="location" className="py-20 sm:py-24 bg-white">
@@ -205,6 +212,14 @@ export function Location() {
               <li key={p} className="flex items-start gap-3"><PinIcon className="w-5 h-5 text-lagoon mt-0.5 shrink-0" /><span>{p}</span></li>
             ))}
           </ul>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {distances.map(([k, v]) => (
+              <div key={k} className="rounded-xl bg-sand px-4 py-3">
+                <div className="font-display text-2xl text-deep font-semibold" dir="ltr">{v.replace(" كم", "")}<span className="text-sm font-sans text-muted"> km</span></div>
+                <div className="text-xs text-muted">{k}</div>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="rounded-3xl overflow-hidden border border-sand-2 aspect-[4/3] bg-sand">
           <iframe
@@ -275,6 +290,58 @@ export function ContactSection() {
         </div>
         <div className="bg-white rounded-3xl p-7 shadow-xl">
           <LeadForm source="contact" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------- Masterplan ---------------------------- */
+export function Masterplan() {
+  const { openLead } = useUI();
+  return (
+    <section id="masterplan" className="py-20 sm:py-24 bg-white">
+      <div className="container-x">
+        <SectionHead eyebrow="Island Masterplan" title="الجزيرة في قلب اللاجون" text="الفيلات محاطة بالمياه من الجهتين، بين قرى Taurina وSolana وAuva — وأقرب نقطة في أزها للبحر." />
+        <div className="rounded-3xl overflow-x-auto border border-sand-2 bg-sand" dir="ltr">
+          <Image src="/images/masterplan-island.jpg" alt="ماستر بلان جزيرة أزها العين السخنة" width={2000} height={780} sizes="(max-width:768px) 800px, 1200px" className="w-full min-w-[760px] md:min-w-0 h-auto" />
+        </div>
+        <p className="text-center text-xs text-muted mt-3"><span className="md:hidden">اسحب لرؤية المخطط كاملاً — </span>مخطط مبدئي من المطور للتوضيح فقط</p>
+        <div className="text-center mt-8">
+          <button onClick={() => openLead("masterplan")} className="btn-gold">اطلب الوحدات المتاحة على الجزيرة</button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------ Finishing specs ------------------------ */
+export function Specs() {
+  const specs = [
+    ["المعيشة والسفرة", "أرضيات بورسلين — حوائط وأسقف دهان أبيض"],
+    ["غرف النوم والدريسنج", "أرضيات بورسلين — دواليب ماستر بلاكيه أبيض مط"],
+    ["المطبخ", "دواليب بلاكيه أبيض مط — رخامة وسبلاش جرانيت"],
+    ["الحمامات", "أرضيات بورسلين — أطقم بيضاء وخلاطات كروم — وحدات فانيتي بسطح رخام"],
+    ["الأبواب", "أبواب Flush بدهان لاكيه أبيض مط"],
+    ["التكييف", "تكييفات سبليت مُركّبة"],
+  ];
+  return (
+    <section id="specs" className="py-20 sm:py-24">
+      <div className="container-x grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-center">
+        <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl">
+          <Image src="/images/gallery-3.jpg" alt="فيلات أزها العين السخنة متشطبة بالكامل" fill sizes="(max-width:1024px) 100vw, 45vw" className="object-cover" />
+        </div>
+        <div>
+          <p className="eyebrow mb-3">Finishing Specifications</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-deep leading-snug mb-6">استلام متشطب بالكامل <br />بالمطبخ والتكييفات</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {specs.map(([k, v]) => (
+              <div key={k} className="bg-white rounded-2xl p-4 border border-sand-2">
+                <div className="flex items-center gap-2 font-bold text-deep mb-1"><CheckIcon className="w-4 h-4 text-lagoon" />{k}</div>
+                <p className="text-sm text-muted leading-relaxed">{v}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -11,7 +11,8 @@ export default function Hero() {
   return (
     <section id="top" className="relative min-h-[100svh] flex items-end lg:items-center overflow-hidden bg-deep">
       <Image src="/images/hero.jpg" alt="فيلات أزها العين السخنة على اللاجون" fill priority sizes="100vw" className="object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/55 to-deep/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/55 to-deep/40" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-deep/70 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-l from-deep/70 via-transparent to-transparent hidden lg:block" />
 
       <div className="container-x relative z-10 grid lg:grid-cols-[1.25fr_0.85fr] gap-10 items-center pt-32 pb-14 lg:py-36">
