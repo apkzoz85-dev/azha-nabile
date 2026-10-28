@@ -5,7 +5,7 @@
 // ============================================================
 
 export const site = {
-  url: "https://azha-sokhna.vercel.app", // ← غيّرها للدومين النهائي
+  url: "https://www.azhadevelopment.com/", // ← غيّرها للدومين النهائي
   brand: "Grandeur Spaces", // اسم الجهة اللي بتعلن (يظهر في الفوتر والإفصاح)
   // صياغة الإفصاح — عدّلها حسب وضعك مع مدار (وكيل معتمد / وسيط مستقل)
   agentDisclosure:
@@ -13,13 +13,13 @@ export const site = {
 };
 
 export const contact = {
-  phone: "01116663367", // رقم الكول
-  whatsapp: "201116663367", // رقم الواتساب بصيغة دولية بدون +
+  phone: "01030083122", // رقم الكول
+  whatsapp: "201030083122", // رقم الواتساب بصيغة دولية بدون +
   whatsappMessage: "مرحباً، أريد تفاصيل فيلات أزها العين السخنة — Island 3",
 };
 
 export const forms = {
-  web3formsKey: "YOUR-WEB3FORMS-ACCESS-KEY", // ← حط مفتاح Web3Forms
+  web3formsKey: "f84ad850-9935-4b72-96b9-4d05ecf6df32", // ← حط مفتاح Web3Forms
   subject: "Lead جديد — Azha Ain Sokhna Villas",
 };
 
